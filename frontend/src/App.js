@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import Navbar from './components/navbar/Navbar.js';
-import LandingDiv from './components/LandingDiv/LandingDiv.js';
+import LandingDiv from './components/elements/LandingDiv.js';
+import JobSearchDiv from './components/elements/JobSearchDiv.js';
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
         <Navbar/>
         <LandingDiv/>
+        <JobSearchDiv/>
     </div>
   );
 }
