@@ -1,6 +1,14 @@
 import React from 'react';
 import JobCard from '../cards/JobCard.js';
 
+const json = [ {jobTitle:"Kucharka", advertiser: "SPSIT", coverImage: "index5.jpg", JobDescription: "budeš variť sračky", profilePicture: "kysuca.png", advertiserName: "Niekto niekto", remainingTime: "80", addedDate: "9.4.2020"},
+]
+
+
+
+//loop over json and create a JobCard for each job
+
+
 let JobSearchDiv = () => {
     return (
         <div class="w-full bg-white p-12">
@@ -12,15 +20,8 @@ let JobSearchDiv = () => {
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
-               
-                <JobCard profilePicture="kysuca.png" coverImage="index5.jpg" advertiser="Stredná priemyselná škola informačných technológií" jobTitle="Učitel Programovania" JobDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil" advertiserName="Ing. Martin Cvinček" addedDate="10. July 2022" remainingTime="69"/>
-                <JobCard profilePicture="kysuca.png" coverImage="index5.jpg" advertiser="Stredná priemyselná škola informačných technológií" jobTitle="Učitel Programovania" JobDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil" advertiserName="Ing. Martin Cvinček" addedDate="10. July 2022" remainingTime="69"/>
-                <JobCard profilePicture="kysuca.png" coverImage="index5.jpg" advertiser="Stredná priemyselná škola informačných technológií" jobTitle="Učitel Programovania" JobDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil" advertiserName="Ing. Martin Cvinček" addedDate="10. July 2022" remainingTime="69"/>
-                <JobCard profilePicture="kysuca.png" coverImage="index5.jpg" advertiser="Stredná priemyselná škola informačných technológií" jobTitle="Učitel Programovania" JobDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil" advertiserName="Ing. Martin Cvinček" addedDate="10. July 2022" remainingTime="69"/>
-                <JobCard profilePicture="kysuca.png" coverImage="index5.jpg" advertiser="Stredná priemyselná škola informačných technológií" jobTitle="Učitel Programovania" JobDescription="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil" advertiserName="Ing. Martin Cvinček" addedDate="10. July 2022" remainingTime="69"/>
-    
-
-                
+                {/*Absolutne neviem, čo toto zaklinadlo robí, ale zjavne funguje*/}
+                {json.map(job => <JobCard {...job} />)}  
             </div>
         </div>
     )
