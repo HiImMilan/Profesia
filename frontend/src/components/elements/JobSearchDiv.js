@@ -1,14 +1,11 @@
 import React from 'react';
 import JobCard from '../cards/JobCard.js';
 
-const json = [ {jobTitle:"Kucharka", advertiser: "SPSIT", coverImage: "index5.jpg", JobDescription: "budeš variť sračky", profilePicture: "kysuca.png", advertiserName: "Niekto niekto", remainingTime: "80", addedDate: "9.4.2020"},
+const json = [ {jobTitle:"Kucharka", advertiser: "SPSIT", coverImage: "index5.jpg", JobDescription: "budeš variť", profilePicture: "kysuca.png", advertiserName: "Niekto niekto", remainingTime: "80", addedDate: "9.4.2020", Tags: ["#Kucharka", "#Skolstvo", "#Kysuca"]},
 ]
 
 
-
 //loop over json and create a JobCard for each job
-
-
 let JobSearchDiv = () => {
     return (
         <div class="w-full bg-white p-12">

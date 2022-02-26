@@ -15,15 +15,8 @@ function JobCard (props) {
                            {props.JobDescription}
                         </p>
                         <div class="flex flex-wrap justify-starts items-center mt-4">
-                            <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                 #IT
-                            </div>
-                            <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                #Učitel
-                            </div>
-                            <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                #StokaKysuca
-                            </div>
+                            {/*{props.Tags} is an array of tags. Loop over it and add tags*/}
+                            {props.Tags.map(tag => <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">{tag}</div>)}
                         </div>
                         <div class="flex items-center mt-4">
                             <a href="#" class="block relative">
