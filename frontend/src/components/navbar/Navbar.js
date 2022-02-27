@@ -7,10 +7,12 @@ let Navbar = () => {
                 WORKA
             </div>
             <span class="w-full md:w-1/3 h-10 cursor-pointer border border-gray-300 text-sm rounded-full flex">
-                <input type="search" name="serch" placeholder="Search" class="flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none"/>
+                <input type="search" name="serch" placeholder="Search" class="flex-grow px-4 rounded-l-full rounded-r-full text-sm focus:outline-none" />
             </span>
             <div class="flex items-center mr-8 hidden md:flex">
-                    
+                <button type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                    Log in / Sign up
+                </button>
             </div>
         </div>
     )

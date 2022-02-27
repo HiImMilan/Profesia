@@ -8,10 +8,10 @@ const json = [ {jobTitle:"Kucharka", advertiser: "SPSIT", coverImage: "index5.jp
 //loop over json and create a JobCard for each job
 let JobSearchDiv = () => {
     return (
-        <div class="w-full bg-white p-12">
+        <div class="w-full bg-white p-12 dark:bg-gray-900">
             <div class="header flex items-end justify-between mb-12">
                 <div class="title">
-                    <p class="text-4xl font-bold text-gray-800 mb-4">
+                    <p class="text-4xl font-bold text-white mb-4">
                         Lastest job offers
                     </p>
                 </div>
