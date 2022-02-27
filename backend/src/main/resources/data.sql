@@ -1,0 +1,1 @@
+INSERT INTO jobs (id, author_id, company_id, description) VALUES (null, 1,1, 'Develops software Must have a good knowledge of Java');
