@@ -1,16 +1,15 @@
-import logo from './logo.svg';
-import Navbar from './components/navbar/Navbar.js';
-import LandingDiv from './components/elements/LandingDiv.js';
-import JobSearchDiv from './components/elements/JobSearchDiv.js';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-        <Navbar/>
-        <LandingDiv/>
-        <JobSearchDiv/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

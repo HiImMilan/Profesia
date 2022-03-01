@@ -17,7 +17,6 @@ let JobSearchDiv = () => {
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
-                {/*Absolutne neviem, čo toto zaklinadlo robí, ale zjavne funguje*/}
                 {json.map(job => <JobCard {...job} />)}  
             </div>
         </div>

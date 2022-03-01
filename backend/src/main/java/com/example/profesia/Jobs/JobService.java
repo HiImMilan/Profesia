@@ -10,7 +10,6 @@ public class JobService {
 
     @Autowired
     private JobRepository jobRepository;
-
     public Iterable<Job> getJobs() {
         return this.jobRepository.findAll();
     }
