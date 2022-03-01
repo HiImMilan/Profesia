@@ -23,4 +23,21 @@ public class Job {
                 ", authorId=" + authorId +
                 '}';
     }
+
+    public Long getId() {
+        return Id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public Long getCompanyId() {
+        return companyId;
+    }
+    public Long getAuthorId() {
+        return authorId;
+    }
+    
 }
