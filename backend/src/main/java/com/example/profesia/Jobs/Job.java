@@ -6,15 +6,15 @@ import javax.persistence.*;
 @Table(name = "jobs")
 public class Job {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String title;
     private String description;
     private Long companyId;
     private Long authorId;
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Job{" +
                 "Id=" + Id +
                 ", title='" + title + '\'' +
@@ -27,17 +27,21 @@ public class Job {
     public Long getId() {
         return Id;
     }
+
     public String getTitle() {
         return title;
     }
+
     public String getDescription() {
         return description;
     }
+
     public Long getCompanyId() {
         return companyId;
     }
+
     public Long getAuthorId() {
         return authorId;
     }
-    
+
 }

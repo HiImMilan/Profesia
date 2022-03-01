@@ -20,7 +20,7 @@ let JobSearchDiv = () => {
     <div class="w-full bg-white p-12 dark:bg-gray-900">
       <div class="header flex items-end justify-between mb-12">
         <div class="title">
-          <p class="text-4xl font-bold text-white mb-4">Lastest job offers</p>
+          <p class="text-3xl font-bold text-white mb-4">Lastest job offers</p>
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
