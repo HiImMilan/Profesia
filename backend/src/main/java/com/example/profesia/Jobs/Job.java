@@ -1,8 +1,12 @@
 package com.example.profesia.Jobs;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
-
+import com.example.profesia.Company.Company;
+import lombok.Data;
 @Entity
+@Data
 @Table(name = "jobs")
 public class Job {
     @Id
@@ -10,38 +14,14 @@ public class Job {
     private Long id;
     private String title;
     private String description;
-    private Long companyId;
-    private Long authorId;
 
-    @Override
-    public String toString() {
-        return "Job{" +
-                "Id=" + Id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", companyId=" + companyId +
-                ", authorId=" + authorId +
-                '}';
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public Long getAuthorId() {
-        return authorId;
-    }
+    private String category;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date endDate;
 
 }
