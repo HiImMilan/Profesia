@@ -1,5 +1,6 @@
 import React from "react";
-import { FaBell } from "react-icons/fa";
+import { FaBell, FaChartBar, FaClipboardList, FaBars } from "react-icons/fa";
+
 function AdminPage() {
   const tableData = [
     {
@@ -46,17 +47,22 @@ function AdminPage() {
           <h1 className="text-3xl font-bold text-white text-center">Worka</h1>
           <ul className="flex flex-col justify-between gap-2 flex-1 mt-52">
             <li className="px-2 py-3 text-neutral-400 text-lg font-medium rounded-md hover:bg-white hover:text-slate-900">
-              <a href="/">Dashboard</a>
+              <a href="/">
+                <FaChartBar className="inline-block"></FaChartBar> Dashboard
+              </a>
             </li>
             <li className="px-2 py-3 text-neutral-400 text-lg font-medium rounded-md hover:bg-white hover:text-slate-900">
-              <a href="/">Resumes</a>
+              <a href="/">
+                <FaClipboardList className="inline-block"></FaClipboardList>
+                Resumes
+              </a>
             </li>
             <li>
               <a
                 href="/"
                 className="px-2 py-3 text-neutral-400 text-lg font-medium rounded-md hover:bg-white hover:text-slate-900"
               >
-                {" "}
+                <FaBars className="inline-block"></FaBars>
                 Advanced
               </a>
             </li>
@@ -66,13 +72,23 @@ function AdminPage() {
           </ul>
         </nav>
         <main className="flex-1 bg-white px-32 py-4">
-          <nav className="float-right w-32">
-            <ul className="flex justify-between items-center px-2">
+          <nav className="float-right w-48">
+            <ul className="flex justify-around items-center px-2">
               <li>
-                <FaBell className="w-5 h-5"></FaBell>
+                <div className="relative">
+                  <FaBell className="w-6 h-6"></FaBell>
+                  <label
+                    htmlFor=""
+                    className="w-2 h-2 text-xs bg-red-400 text-white rounded-full absolute text-center bottom-5 left-5"
+                  ></label>
+                </div>
               </li>
-              <li className="rounded-xl overflow-hidden w-10">
-                <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light" />
+              <li className="rounded-xl overflow-hidden w-10 flex justify-center items-center flex-1">
+                <div className="font-bold mx-5">Test Test</div>
+                <img
+                  className="w-10 h-10"
+                  src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                />
               </li>
             </ul>
           </nav>

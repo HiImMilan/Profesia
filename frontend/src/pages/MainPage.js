@@ -1,16 +1,14 @@
 import React from "react";
-import Navbar from "../components/navbar/Navbar";
-import LandingDiv from "../components/elements/LandingDiv";
+import HeroBox from "../components/elements/HeroBox";
 import JobSearchDiv from "../components/elements/JobSearchDiv";
 
 function MainPage() {
-    return (
-        <div className="App">
-            <Navbar/>
-            <LandingDiv/>
-            <JobSearchDiv/>
-        </div>
-    )
+  return (
+    <div className="App">
+      <HeroBox />
+      <JobSearchDiv />
+    </div>
+  );
 }
 
 export default MainPage;
