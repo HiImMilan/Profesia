@@ -1,16 +1,12 @@
 import React from "react";
-import Navbar from "../components/navbar/Navbar";
-import LandingDiv from "../components/elements/LandingDiv";
-import JobSearchDiv from "../components/elements/JobSearchDiv";
+import LoginForm from "../components/forms/loginForm";
 
-function MainPage() {
+function LoginRegisterPage() {
     return (
-        <div className="App">
-            <Navbar/>
-            <LandingDiv/>
-            <JobSearchDiv/>
+        <div class="loginpage-bgimg" className="App">
+            <LoginForm/>
         </div>
     )
 }
 
-export default MainPage;
+export default LoginRegisterPage;

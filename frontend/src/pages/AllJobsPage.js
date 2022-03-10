@@ -3,7 +3,7 @@ import Navbar from "../components/navbar/Navbar";
 import LandingDiv from "../components/elements/LandingDiv";
 import JobSearchDiv from "../components/elements/JobSearchDiv";
 
-function MainPage() {
+function LoginRegisterPage() {
     return (
         <div className="App">
             <Navbar/>
@@ -13,4 +13,4 @@ function MainPage() {
     )
 }
 
-export default MainPage;
+export default LoginRegisterPage;
