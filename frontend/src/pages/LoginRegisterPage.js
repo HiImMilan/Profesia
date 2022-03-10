@@ -1,10 +1,14 @@
 import React from "react";
-import LoginForm from "../components/forms/loginForm";
+import LoginForm from "../components/forms/loginForm"; 
+import RegisterForm from "../components/forms/registerForm";
+
 
 function LoginRegisterPage() {
     return (
-        <div class="loginpage-bgimg" className="App">
-            <LoginForm/>
+        <div className="App">
+            <div class="loginpage-bgimg">    
+                <LoginForm/>
+            </div>
         </div>
     )
 }

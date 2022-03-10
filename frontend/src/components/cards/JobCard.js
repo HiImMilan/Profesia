@@ -1,4 +1,6 @@
 import React from "react";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 function JobCard(props) {
   return (
@@ -19,9 +21,7 @@ function JobCard(props) {
           </p>
           <div class="flex flex-wrap justify-starts items-center mt-4">
             {props.Tags.map((tag) => (
-              <div class="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                {tag}
-              </div>
+              <Chip label="{tag}" variant="outlined" /* onClick={} */ />
             ))}
           </div>
           <div class="flex items-center mt-4">
