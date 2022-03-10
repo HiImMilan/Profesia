@@ -1,7 +1,5 @@
 package com.example.profesia.Jobs;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +8,7 @@ public class JobService {
 
     @Autowired
     private JobRepository jobRepository;
+
     public Iterable<Job> getJobs() {
         return this.jobRepository.findAll();
     }
