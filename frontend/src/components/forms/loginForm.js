@@ -4,6 +4,33 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
+import {ThemeProvider } from "@mui/material";
+import {createTheme} from '@mui/material/styles'
+  
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: 'white',
+    },
+    '& label': {
+        color: 'white',
+    },
+    '& input': {
+        color: 'white',
+    },
+      
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: 'white',
+        },
+        '&:hover fieldset': {
+          borderColor: 'white',
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: 'white',
+        },
+      },
+      
+  });
 
 function LoginForm() {
  return (
@@ -24,12 +51,10 @@ function LoginForm() {
         <div class="mt-8">
             <form action="#" autoComplete="off">
                 <div class="flex flex-col mb-2">
-                    <TextField id="email" label="Worka ID" variant="filled" />
+                    <CssTextField type="email" id="email" label="Worka ID" variant="outlined"/>
                 </div>
                 <div class="flex flex-col mb-6">
-                    <div class="flex relative ">
-                        <TextField id="password" label="Password" variant="filled" />            
-                    </div>
+                    <CssTextField type="password" id="password" label="Password" variant="outlined"/>        
                 </div>
                         <div class="flex items-center mb-6 -mt-4">
                             <div class="flex ml-auto">
