@@ -29,7 +29,7 @@ function AdminPage() {
             <h3 className="text-2xl  text-white">Dashboard</h3>
 
             <section className="grid grid-cols-2 gap-2 my-5 h-96 max-h-96 overflow-hidden">
-              <section className="grid grid-cols-2 gap-2 my-5 justify-center items-center">
+              <section className="w-fit h-fit grid grid-cols-2 gap-2 my-5 self-center justify-self-start">
                 <DashBoardCard title="Customers" value="10"></DashBoardCard>
                 <DashBoardCard title="Customers" value="10"></DashBoardCard>
                 <DashBoardCard title="Customers" value="10"></DashBoardCard>
