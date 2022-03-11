@@ -1,65 +1,22 @@
 import React from "react";
-import { FaBell } from "react-icons/fa";
 import Navbar from "../components/navbar/navbar";
-
+import Bell from "../components/bell/Bell";
+import TableComponent from "../components/table/TableComponent";
+import Toast from "../components/toast/Toast";
+import Graph from "../components/graphs/Graph";
+import DashBoardCard from "../components/cards/DasboardCard";
 function AdminPage() {
-  const tableData = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "dasas",
-      year: "2020",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      email: "dasas",
-      year: "2020",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      email: "dasas",
-      year: "2020",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      email: "dasas",
-      year: "2020",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      email: "dasas",
-      year: "2020",
-    },
-    {
-      id: 2,
-      name: "John Doe",
-      email: "dasas",
-      year: "2020",
-    },
-  ];
   return (
     <div className="App">
-      <section className="flex justify-center h-screen">
+      <section className="flex justify-center h-screen max-h-screen overflow-hidden">
         <Navbar></Navbar>
-        <main className="flex-1 bg-white px-32 py-4">
+        <main className="flex-1 bg-slate-900 px-32 py-4">
           <nav className="float-right w-48">
-            <ul className="flex justify-around items-center px-2">
+            <ul className="flex justify-around items-center px-2 text-white">
               <li>
-                <div className="relative">
-                  <FaBell className="w-6 h-6 cursor-pointer hover:rotate-12 transition-transform duration-75"></FaBell>
-                  <label
-                    htmlFor=""
-                    className="w-4 h-4 text-xs bg-red-400 text-white rounded-full absolute text-center bottom-4 left-4"
-                  >
-                    1
-                  </label>
-                </div>
+                <Bell></Bell>
               </li>
-              <li className="rounded-xl overflow-hidden w-10 flex justify-center items-center flex-1">
+              <li className="rounded-xl overflow-hidden w-10 flex justify-center items-center flex-1 ">
                 <div className="font-bold mx-5">Test Test</div>
                 <img
                   className="w-10 h-10"
@@ -69,54 +26,32 @@ function AdminPage() {
             </ul>
           </nav>
           <section className="my-10">
-            <h3 className="text-2xl font-bold text-neutral-900">Dashboard</h3>
+            <h3 className="text-2xl  text-white">Dashboard</h3>
 
-            <section className="grid grid-cols-3 justify-center my-5">
-              <input
-                type="text"
-                placeholder="Search for"
-                className="border-2"
-              />
-              <input
-                type="text"
-                placeholder="Search for"
-                className="border-2"
-              />
-              <input
-                type="text"
-                placeholder="Search for"
-                className="border-2"
-              />
+            <section className="grid grid-cols-2 gap-2 my-5 h-96 max-h-96 overflow-hidden">
+              <section className="grid grid-cols-2 gap-2 my-5 justify-center items-center">
+                <DashBoardCard title="Customers" value="10"></DashBoardCard>
+                <DashBoardCard title="Customers" value="10"></DashBoardCard>
+                <DashBoardCard title="Customers" value="10"></DashBoardCard>
+                <DashBoardCard title="Customers" value="10"></DashBoardCard>
+              </section>
+              <section className="h-96">
+                <Graph></Graph>
+              </section>
             </section>
 
             <section className="my-64">
-              <table class="border-collapse table-fixed w-full text-sm">
-                <thead className="bg-gray-300">
-                  <tr>
-                    <th className="p-5 px-10 rounded-tl-xl text-left">Song</th>
-                    <th className="py-5 text-right">Artist</th>
-                    <th className="p-5 px-10 rounded-tr-xl text-right ">
-                      Year
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {tableData.map((item) => (
-                    <tr
-                      className="bg-red-400"
-                      style={{ borderBottom: "1px solid white" }}
-                    >
-                      <td className="px-10 py-3">{item.name}</td>
-                      <td className="text-right">{item.email}</td>
-                      <td className="text-right px-10">{item.year}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <TableComponent
+                columns={["Name", "Email", "Year", "Action"]}
+                keys={["name", "email", "year"]}
+                rowsPerPage={8}
+              ></TableComponent>
             </section>
           </section>
         </main>
       </section>
+
+      <Toast></Toast>
     </div>
   );
 }
