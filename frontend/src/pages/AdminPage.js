@@ -8,9 +8,9 @@ import DashBoardCard from "../components/cards/DasboardCard";
 function AdminPage() {
   return (
     <div className="App">
-      <section className="flex justify-center h-screen max-h-screen overflow-hidden">
+      <section className="flex justify-center h-screen max-h-screen">
         <Navbar></Navbar>
-        <main className="flex-1 bg-slate-900 px-32 py-4">
+        <main className="flex-1 bg-slate-900 px-8 py-4 overflow-y-auto md:px-32">
           <nav className="float-right w-48">
             <ul className="flex justify-around items-center px-2 text-white">
               <li>
@@ -28,14 +28,13 @@ function AdminPage() {
           <section className="my-10">
             <h3 className="text-2xl  text-white">Dashboard</h3>
 
-            <section className="grid grid-cols-2 gap-2 my-5 h-96 max-h-96 overflow-hidden">
-              <section className="w-fit h-fit grid grid-cols-2 gap-2 my-5 self-center justify-self-start">
-                <DashBoardCard title="Customers" value="10"></DashBoardCard>
-                <DashBoardCard title="Customers" value="10"></DashBoardCard>
-                <DashBoardCard title="Customers" value="10"></DashBoardCard>
-                <DashBoardCard title="Customers" value="10"></DashBoardCard>
-              </section>
-              <section className="h-96">
+            <section className="grid gap-4 my-5 h-96 max-h-96 grid-cols-1 grid-flow-row md:grid-cols-6 md:grid-rows-2 md:grid-flow-col-dense">
+              <DashBoardCard title="Customers" value="10"></DashBoardCard>
+              <DashBoardCard title="Customers" value="10"></DashBoardCard>
+              <DashBoardCard title="Customers" value="10"></DashBoardCard>
+              <DashBoardCard title="Customers" value="10"></DashBoardCard>
+
+              <section className="h-96 md:col-start-3 md:col-end-7">
                 <Graph></Graph>
               </section>
             </section>
