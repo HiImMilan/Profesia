@@ -11,13 +11,13 @@ app.get("/testApi/projects", (req, res, next) => {
 
     console.log("testApi/projects");
     const cursor = parseInt(req.query.cursor) || 0
-    const pageSize = 5
+    const pageSize = 25
   
     const data = Array(pageSize)
       .fill(0)
       .map((_, i) => {
         return {
-          name: 'Project ' + (i + cursor) + ` (server time: ${Date.now()})`,
+          advertiser: 'Project ' + (i + cursor) + ` (server time: ${Date.now()})`,
           id: i + cursor,
         }
       })
@@ -25,7 +25,6 @@ app.get("/testApi/projects", (req, res, next) => {
     const nextId = cursor < 10 ? data[data.length - 1].id + 1 : null
     const previousId = cursor > -10 ? data[0].id - pageSize : null
   
-
     console.log("data", data);
     setTimeout(() => res.json({ data, nextId, previousId }), 1000)
   });

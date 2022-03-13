@@ -20,9 +20,7 @@ function JobCard(props) {
             {props.description}
           </p>
           <div class="flex flex-wrap justify-starts items-center mt-4">
-            {props.Tags.map((tag) => (
-              <Chip label="{tag}" variant="outlined" /* onClick={} */ />
-            ))}
+            <Chip label="Full-time" className="mr-2" />
           </div>
           <div class="flex items-center mt-4">
             <a href="#" class="block relative">
@@ -46,5 +44,10 @@ function JobCard(props) {
     </div>
   );
 }
+
+/* hore ako tags: 
+{props.Tags.map((tag) => (
+<Chip label="{tag}" variant="outlined"  onClick={}/ />
+*/
 
 export default JobCard;

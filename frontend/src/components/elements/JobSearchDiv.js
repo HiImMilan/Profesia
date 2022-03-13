@@ -17,11 +17,9 @@ let JobSearchDiv = () => {
           <p class="text-3xl font-bold text-white mb-4">Lastest job offers</p>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
         <QueryClientProvider client={queryClient}>
           <CardRendered/>
         </QueryClientProvider>
-      </div>
     </div>
   );
 };
@@ -61,56 +59,16 @@ function CardRendered() {
   })
 
   return (
-    <div>
-      <h1>Infinite Loading</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
       {status === 'loading' ? (
         <p>Loading...</p>
       ) : status === 'error' ? (
         <span>Error: {error.message}</span>
       ) : (
         <>
-          <div>
-            <button
-              onClick={() => fetchPreviousPage()}
-              disabled={!hasPreviousPage || isFetchingPreviousPage}
-            >
-              {isFetchingPreviousPage
-                ? 'Loading more...'
-                : hasPreviousPage
-                ? 'Load Older'
-                : 'Nothing more to load'}
-            </button>
-          </div>
           {data.pages.map(page => (
-            <React.Fragment key={page.nextId}>
-              {page.data.map(project => (
-                <p
-                  style={{
-                    border: '1px solid gray',
-                    borderRadius: '5px',
-                    padding: '10rem 1rem',
-                    background: `hsla(${project.id * 30}, 60%, 80%, 1)`,
-                  }}
-                  key={project.id}
-                >
-                  {project.name}
-                </p>
-              ))}
-            </React.Fragment>
+            <JobCard {...page} />
           ))}
-          <div>
-            <button
-              ref={loadMoreButtonRef}
-              onClick={() => fetchNextPage()}
-              disabled={!hasNextPage || isFetchingNextPage}
-            >
-              {isFetchingNextPage
-                ? 'Loading more...'
-                : hasNextPage
-                ? 'Load Newer'
-                : 'Nothing more to load'}
-            </button>
-          </div>
           <div>
             {isFetching && !isFetchingNextPage
               ? 'Background Updating...'
@@ -125,5 +83,15 @@ function CardRendered() {
 }
 
 
+/*
+
+
+
+
+
+
+
+
+*/
 
 export default JobSearchDiv;
