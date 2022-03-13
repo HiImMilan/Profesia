@@ -12,7 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProfesiaApplication implements CommandLineRunner {
+public class ProfesiaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProfesiaApplication.class, args);
@@ -20,14 +20,5 @@ public class ProfesiaApplication implements CommandLineRunner {
 
 	@Autowired
 	private DatabaseSeeder databaseSeeder;
-
-	@Override
-	public void run(String... args) throws IOException {
-
-		boolean fillDatabase = true;
-		if (fillDatabase) {
-			databaseSeeder.Seed();
-		}
-	}
 
 }
