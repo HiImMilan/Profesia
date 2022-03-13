@@ -3,6 +3,7 @@ package com.example.profesia;
 import java.io.IOException;
 
 import com.example.profesia.Jobs.JobSeeder;
+import com.example.profesia.User.UserSeeder;
 
 import org.hibernate.boot.model.relational.Database;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,14 @@ public class ProfesiaApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private JobSeeder jobSeeder;
+	private DatabaseSeeder databaseSeeder;
+
 	@Override
 	public void run(String... args) throws IOException {
 
 		boolean fillDatabase = true;
 		if (fillDatabase) {
-			jobSeeder.Seed();
+			databaseSeeder.Seed();
 		}
 	}
 

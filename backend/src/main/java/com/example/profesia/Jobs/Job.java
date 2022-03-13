@@ -10,7 +10,7 @@ import lombok.Data;
 @Table(name = "jobs")
 public class Job {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;

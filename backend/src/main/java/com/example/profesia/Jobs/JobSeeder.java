@@ -18,6 +18,7 @@ public class JobSeeder extends ISeedable {
         this.setNumberOfEntities(100);
     }
 
+    @Override
     public ISeedable Seed() {
         Faker faker = new Faker();
         var jobFaker = new com.github.javafaker.Job(faker);
