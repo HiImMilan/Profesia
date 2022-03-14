@@ -67,6 +67,7 @@ function CardRendered() {
         <span>Error: {error.message}</span>
       ) : (
         <>
+        
           {data.pages.map(page => (
             console.log("page", page),
             <JobCard {...page.data[0]} />
