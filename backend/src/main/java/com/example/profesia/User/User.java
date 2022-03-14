@@ -1,5 +1,7 @@
 package com.example.profesia.User;
 
+import java.util.Collection;
+
 import javax.persistence.*;
 
 import lombok.Data;
@@ -14,5 +16,5 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private String role;
+
 }

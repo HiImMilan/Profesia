@@ -1,6 +1,7 @@
 package com.example.profesia;
 
 import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +22,9 @@ public class ProfesiaApplication implements CommandLineRunner {
 
 		boolean fillDatabase = true;
 		if (fillDatabase) {
+
 			databaseSeeder.Seed();
+
 		}
 	}
 
