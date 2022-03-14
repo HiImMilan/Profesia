@@ -17,8 +17,13 @@ app.get("/testApi/projects", (req, res, next) => {
       .fill(0)
       .map((_, i) => {
         return {
-          advertiser: 'Project ' + (i + cursor) + ` (server time: ${Date.now()})`,
+          advertiser: 'Project XYZ',
+          coverImage: 'https://live.staticflickr.com/65535/51225686111_9e7cf4912c_k_d.jpg',
           id: i + cursor,
+          advertiserName: "Jožko Novák",
+          addedDate: "2020-01-01",
+          remainingTime: "1",
+          title: "Project " + (i + cursor),
         }
       })
   

@@ -42,6 +42,7 @@ function CardRendered() {
     'projects',
     async ({ pageParam = 0 }) => {
       const res = await axios.get('http://localhost:3001/testApi/projects?cursor=' + pageParam)
+      console.log("res", res);
       return res.data
     },
     {
@@ -67,7 +68,10 @@ function CardRendered() {
       ) : (
         <>
           {data.pages.map(page => (
-            <JobCard {...page} />
+            console.log("page", page),
+            <JobCard {...page.data[0]} />
+            // Tu sa deje niečo velmi divne - z nejakeho dôvodu sa posiela všetkých 25 prvkov v arraye,
+            // tym padom je ...page array full requestu
           ))}
           <div>
             {isFetching && !isFetchingNextPage
@@ -82,16 +86,5 @@ function CardRendered() {
   )
 }
 
-
-/*
-
-
-
-
-
-
-
-
-*/
 
 export default JobSearchDiv;
