@@ -23,10 +23,13 @@ app.get("/testApi/projects", (req, res, next) => {
           advertiserName: "Jožko Novák",
           addedDate: "2020-01-01",
           remainingTime: "1",
-          title: "Project " + (i + cursor),
+          title: "Project " + i + " - " + cursor,
         }
       })
   
-    console.log("data", data);
-    setTimeout(() => res.json({ data }), 1000)
+    //console.log("data", data);
+
+    console.log("request", req.query);
+
+    setTimeout(() => res.json({ data, cursor}), 1000)
   });

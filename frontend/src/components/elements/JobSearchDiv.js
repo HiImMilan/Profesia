@@ -25,8 +25,7 @@ let JobSearchDiv = () => {
   );
 };
 
-
-let scrollpage = 0;
+let CurrentPage = 0;
 function CardRenderer() {
 
   const { status, data, error, isFetching, isFetchingNextPage, isFetchingPreviousPage, fetchNextPage, fetchPreviousPage, hasNextPage,  hasPreviousPage,
@@ -39,7 +38,10 @@ function CardRenderer() {
     },
     {
       //getPreviousPageParam: firstPage => firstPage.previousId ?? false, 
-      getNextPageParam: scrollpage => scrollpage + 1,
+      // getNextPageParam increment pageParam by 1
+      getNextPageParam: (lastPage, allPages) => {
+        return lastPage.cursor + 1 ?? false
+      }
 
     }
   )
