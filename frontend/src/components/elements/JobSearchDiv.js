@@ -18,36 +18,29 @@ let JobSearchDiv = () => {
         </div>
       </div>
         <QueryClientProvider client={queryClient}>
-          <CardRendered/>
+          <CardRenderer />    
+          <ReactQueryDevtools initialIsOpen />
         </QueryClientProvider>
     </div>
   );
 };
 
 
+let scrollpage = 0;
+function CardRenderer() {
 
-function CardRendered() {
-  const {
-    status,
-    data,
-    error,
-    isFetching,
-    isFetchingNextPage,
-    isFetchingPreviousPage,
-    fetchNextPage,
-    fetchPreviousPage,
-    hasNextPage,
-    hasPreviousPage,
+  const { status, data, error, isFetching, isFetchingNextPage, isFetchingPreviousPage, fetchNextPage, fetchPreviousPage, hasNextPage,  hasPreviousPage,
   } = useInfiniteQuery(
     'projects',
-    async ({ pageParam = 0 }) => {
-      const res = await axios.get('http://localhost:3001/testApi/projects?cursor=' + pageParam)
+     async ({ pageParam = 0 }) => {
+      const res = await axios.get('http://localhost:3001/testApi/projects?page=' + pageParam)
       console.log("res", res);
       return res.data
     },
     {
-      getPreviousPageParam: firstPage => firstPage.previousId ?? false,
-      getNextPageParam: lastPage => lastPage.nextId ?? false,
+      //getPreviousPageParam: firstPage => firstPage.previousId ?? false, 
+      getNextPageParam: scrollpage => scrollpage + 1,
+
     }
   )
 
@@ -56,7 +49,8 @@ function CardRendered() {
   useIntersectionObserver({
     target: loadMoreButtonRef,
     onIntersect: fetchNextPage,
-    enabled: !!hasNextPage,
+    enabled: true,
+    //enabled: !!hasNextPage,
   })
 
   return (
@@ -70,19 +64,19 @@ function CardRendered() {
         
           {data.pages.map(page => (
             console.log("page", page),
-            <JobCard {...page.data[0]} />
-            // Tu sa deje niečo velmi divne - z nejakeho dôvodu sa posiela všetkých 25 prvkov v arraye,
-            // tym padom je ...page array full requestu
+            // wtf
+            page.data.map(card => (
+            <JobCard {...card} /> 
+            ))
           ))}
-          <div>
+          
+          <div ref={loadMoreButtonRef}>
             {isFetching && !isFetchingNextPage
               ? 'Background Updating...'
               : null}
           </div>
         </>
       )}
-      <hr />
-      <ReactQueryDevtools initialIsOpen />
     </div>
   )
 }
