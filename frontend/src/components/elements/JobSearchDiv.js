@@ -1,8 +1,9 @@
-import {useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import React from 'react';
 import JobCard from "../cards/JobCard.js";
+import SkeletonCard from "../cards/SkeletonCard";
 import axios from 'axios'
-import {useInfiniteQuery, QueryClient, QueryClientProvider} from 'react-query'
+import { useInfiniteQuery, QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
@@ -17,10 +18,10 @@ let JobSearchDiv = () => {
           <p class="text-3xl font-bold text-white mb-4">Lastest job offers</p>
         </div>
       </div>
-        <QueryClientProvider client={queryClient}>
-          <CardRenderer />    
-          <ReactQueryDevtools initialIsOpen />
-        </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <CardRenderer />
+        <ReactQueryDevtools initialIsOpen />
+      </QueryClientProvider>
     </div>
   );
 };
@@ -28,10 +29,10 @@ let JobSearchDiv = () => {
 let CurrentPage = 0;
 function CardRenderer() {
 
-  const { status, data, error, isFetching, isFetchingNextPage, isFetchingPreviousPage, fetchNextPage, fetchPreviousPage, hasNextPage,  hasPreviousPage,
+  const { status, data, error, isFetching, isFetchingNextPage, isFetchingPreviousPage, fetchNextPage, fetchPreviousPage, hasNextPage, hasPreviousPage,
   } = useInfiniteQuery(
     'projects',
-     async ({ pageParam = 0 }) => {
+    async ({ pageParam = 0 }) => {
       const res = await axios.get('http://localhost:3001/testApi/projects?page=' + pageParam)
       console.log("res", res);
       return res.data
@@ -58,20 +59,20 @@ function CardRenderer() {
   return (
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
       {status === 'loading' ? (
-        <p>Loading...</p>
+       <SkeletonCard/>
       ) : status === 'error' ? (
         <span>Error: {error.message}</span>
       ) : (
         <>
-        
+
           {data.pages.map(page => (
             console.log("page", page),
             // wtf
             page.data.map(card => (
-            <JobCard {...card} /> 
+              <JobCard {...card} />
             ))
           ))}
-          
+
           <div ref={loadMoreButtonRef}>
             {isFetching && !isFetchingNextPage
               ? 'Background Updating...'
