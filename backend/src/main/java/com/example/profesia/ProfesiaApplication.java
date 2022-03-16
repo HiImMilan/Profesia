@@ -20,7 +20,7 @@ public class ProfesiaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws IOException {
 
-		boolean fillDatabase = true;
+		boolean fillDatabase = false;
 		if (fillDatabase) {
 
 			databaseSeeder.Seed();

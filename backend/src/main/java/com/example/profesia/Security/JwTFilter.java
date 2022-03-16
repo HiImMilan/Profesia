@@ -44,21 +44,20 @@ public class JwTFilter extends OncePerRequestFilter {
             }
         }
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (username != "" && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(username);
-
-            if (jwtTokenUtil.validateToken(jwtToken) && userDetails.getUsername() == username
-                    && jwtTokenUtil.isExpired(jwtToken)) {
-
+            if (jwtTokenUtil.validateToken(jwtToken) && userDetails.getUsername().equals(username)
+                    && !jwtTokenUtil.isExpired(jwtToken)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
+                        userDetails, userDetails, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
 
         }
+
         filterChain.doFilter(request, response);
     }
 

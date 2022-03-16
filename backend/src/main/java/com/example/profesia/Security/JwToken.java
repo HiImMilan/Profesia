@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class JwToken {
 
     private final String SECRET = "wk69BAz&{UlIJCL+I'4t!^C*J44kf";
-    private final long EXPIRATION_TIME = 86400;
+    private final long EXPIRATION_TIME = 8640000;
 
     public String createToken(String id, String username) {
         return Jwts.builder()
