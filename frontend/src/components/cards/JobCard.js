@@ -22,7 +22,7 @@ function JobCard(props) {
           <div class="flex flex-wrap justify-starts items-center mt-4">
             {props.tags.map((tag) => (
               <Chip label={tag} />
-            ))}  
+            ))}
           </div>
           <div class="flex items-center mt-4">
             <a href="#" class="block relative">

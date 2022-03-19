@@ -71,14 +71,12 @@ function CardRenderer() {
               <JobCard {...card} />
             ))
           ))}
-
-          <div ref={loadMoreButtonRef}>
-            {isFetching && !isFetchingNextPage
-              ? '<SkeletonCard/>'
-              : null}
-          </div>
+           {/* while fetching new data, add SkeletonCard - when finished remove it*/}
+          {isFetchingNextPage && <SkeletonCard/>}
         </>
       )}
+      <div ref={loadMoreButtonRef}>
+           </div>
     </div>
   )
 }
