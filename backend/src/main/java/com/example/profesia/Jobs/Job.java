@@ -13,6 +13,7 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Column(name = "description", length = 65535, columnDefinition = "TEXT")
     private String description;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
