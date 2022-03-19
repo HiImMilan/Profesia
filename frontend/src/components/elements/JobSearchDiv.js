@@ -19,14 +19,13 @@ let JobSearchDiv = () => {
         </div>
       </div>
       <QueryClientProvider client={queryClient}>
-        <CardRenderer />
+        <CardRenderer/>
         <ReactQueryDevtools initialIsOpen />
       </QueryClientProvider>
     </div>
   );
 };
 
-let CurrentPage = 0;
 function CardRenderer() {
 
   const { status, data, error, isFetching, isFetchingNextPage, isFetchingPreviousPage, fetchNextPage, fetchPreviousPage, hasNextPage, hasPreviousPage,
@@ -75,7 +74,7 @@ function CardRenderer() {
 
           <div ref={loadMoreButtonRef}>
             {isFetching && !isFetchingNextPage
-              ? 'Background Updating...'
+              ? '<SkeletonCard/>'
               : null}
           </div>
         </>
