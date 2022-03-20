@@ -28,18 +28,18 @@ function AdminPage() {
           <section className="my-10">
             <h3 className="text-2xl  text-white">Dashboard</h3>
 
-            <section className="grid gap-4 my-5 h-96 max-h-96 grid-cols-1 grid-flow-row md:grid-cols-6 md:grid-rows-2 md:grid-flow-col-dense">
+            <section className="grid gap-4 my-5 grid-cols-1 grid-flow-row md:grid-cols-6 md:grid-rows-2 md:grid-flow-col-dense md:h-96">
               <DashBoardCard title="Customers" value="10"></DashBoardCard>
               <DashBoardCard title="Customers" value="10"></DashBoardCard>
               <DashBoardCard title="Customers" value="10"></DashBoardCard>
               <DashBoardCard title="Customers" value="10"></DashBoardCard>
 
-              <section className="h-96 md:col-start-3 md:col-end-7">
+              <section className="h-96 md:col-start-3 md:col-end-7 -order-1">
                 <Graph></Graph>
               </section>
             </section>
 
-            <section className="my-64">
+            <section className=" my-16 md:my-64">
               <TableComponent
                 columns={["Name", "Email", "Year", "Action"]}
                 keys={["name", "email", "year"]}

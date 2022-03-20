@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaChartBar, FaClipboardList, FaBars } from "react-icons/fa";
 import { IoIosSettings } from "react-icons/io";
 import { AiFillStar } from "react-icons/ai";
+import "./navbar.css";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -52,8 +53,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className="bg-slate-800 p-5 flex flex-col transition-all duration-200 w-56"
-      style={!isOpen ? { maxWidth: "80px" } : { maxWidth: "300px" }}
+      className={
+        "bg-slate-800 p-5 flex flex-col transition-all duration-200 w-56 mainNav " +
+        (isOpen ? "active" : "")
+      }
     >
       <h1 className="text-3xl font-bold text-white text-center">
         {isOpen ? "Worka" : "W"}

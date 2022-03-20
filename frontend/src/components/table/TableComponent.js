@@ -81,7 +81,9 @@ export default function TableComponent(props) {
   }
   return (
     <section
-      className={"w-2/3 bg-slate-700 text-neutral-400 rounded-lg "}
+      className={
+        "bg-slate-700 text-neutral-400 rounded-lg md:w-2/3 overflow-x-auto"
+      }
       style={expanded ? expandStyle : {}}
     >
       <div className="p-5">
