@@ -19,7 +19,7 @@ let JobSearchDiv = () => {
         </div>
       </div>
       <QueryClientProvider client={queryClient}>
-        <CardRenderer/>
+        <CardRenderer />
         <ReactQueryDevtools initialIsOpen />
       </QueryClientProvider>
     </div>
@@ -58,9 +58,7 @@ function CardRenderer() {
   return (
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
       {status === 'loading' ? (
-       <SkeletonCard/>
-      ) : status === 'error' ? (
-        <span>Error: {error.message}</span>
+        <SkeletonCard failing="false" />
       ) : (
         <>
 
@@ -71,12 +69,17 @@ function CardRenderer() {
               <JobCard {...card} />
             ))
           ))}
-           {/* while fetching new data, add SkeletonCard - when finished remove it*/}
-          {isFetchingNextPage && <SkeletonCard/>}
+
+          {status === 'error' && (
+            <SkeletonCard failing="true" failingReason={error.message} />
+          )}
+
+          {isFetchingNextPage && <SkeletonCard failing="false" />}
+
         </>
       )}
       <div ref={loadMoreButtonRef}>
-           </div>
+      </div>
     </div>
   )
 }
