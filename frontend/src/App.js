@@ -6,6 +6,8 @@ import LoginRegisterPage from "./pages/LoginRegisterPage";
 import "./App.css";
 import DashboardView from "./components/DashboardView";
 
+import { ReactQueryDevtools } from 'react-query/devtools'
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,7 @@ function App() {
           element={<DashboardView></DashboardView>}
         ></Route>
       </Routes>
+      
     </BrowserRouter>
   );
 }
