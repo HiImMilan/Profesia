@@ -3,7 +3,6 @@ package com.example.profesia.Security;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.example.profesia.User.Role;
@@ -23,16 +22,25 @@ public class JwTUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
 
-        com.example.profesia.User.User userData = userRepository.findByEmail("recruter@gmail.com");
+        try {
+            com.example.profesia.User.User userData = userRepository.findAll().iterator().next();
+            UserBuilder userBuilder = User.builder().username(userData.getName()).password(userData.getPassword())
+                    .authorities(getAuthorities(userData));
+            return userBuilder.build();
 
-        /*
-         * UserBuilder userBuilder =
-         * User.builder().username(userData.getName()).password(userData.getPassword())
-         * .authorities(getAuthorities());
-         * System.out.println(userBuilder.build());
-         */
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
 
-        return User.withUsername("admin").password("admin").roles("ADMIN").build();
+    }
+
+    private List<GrantedAuthority> getAuthorities(com.example.profesia.User.User userData) {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : userData.getRoles()) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
     }
 
 }
