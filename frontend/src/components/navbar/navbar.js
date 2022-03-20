@@ -17,7 +17,7 @@ export default function Navbar() {
     {
       name: "Jobs",
       icon: <FaClipboardList />,
-      path: "/jobs",
+      path: "jobs",
     },
     {
       name: "Candidates",
