@@ -23,16 +23,18 @@ public class JwTUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
 
-        com.example.profesia.User.User userData = userRepository.findByEmail("recruter@gmail.com");
+        com.example.profesia.User.User userData = userRepository.findByEmail(username);
 
-        /*
-         * UserBuilder userBuilder =
-         * User.builder().username(userData.getName()).password(userData.getPassword())
-         * .authorities(getAuthorities());
-         * System.out.println(userBuilder.build());
-         */
+        UserBuilder userBuilder = User.builder().username(userData.getName()).password(userData.getPassword())
+                .authorities(getAuthorities());
 
-        return User.withUsername("admin").password("admin").roles("ADMIN").build();
+        return userBuilder.build();
+    }
+
+    private SimpleGrantedAuthority getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        return new SimpleGrantedAuthority("ROLE_ADMIN");
     }
 
 }
