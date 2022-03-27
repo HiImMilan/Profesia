@@ -43,7 +43,6 @@ public class JwTFilter extends OncePerRequestFilter {
                 System.out.println("JWT Token has expired");
             }
         }
-
         if (username != "" && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(username);
@@ -54,6 +53,7 @@ public class JwTFilter extends OncePerRequestFilter {
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+
             }
 
         }

@@ -1,52 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaChartBar, FaClipboardList, FaBars } from "react-icons/fa";
-import { IoIosSettings } from "react-icons/io";
-import { AiFillStar } from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
 import "./navbar.css";
+import userRoutes from "../../routes/userRoutes";
+import recrutorRoutes from "../../routes/recrutorRoutes";
+
 export default function Navbar() {
+  const routes = recrutorRoutes;
   const [isOpen, setIsOpen] = useState(true);
-
-  // recruter routes
-  const routes = [
-    {
-      name: "Dashboard",
-      icon: <FaChartBar />,
-      path: "/dashboard",
-    },
-    {
-      name: "Jobs",
-      icon: <FaClipboardList />,
-      path: "jobs",
-    },
-    {
-      name: "Candidates",
-      icon: <FaClipboardList />,
-      path: "/candidates",
-    },
-    {
-      name: "Settings",
-      icon: <IoIosSettings />,
-      path: "/settings",
-    },
-  ];
-
-  // user routes
-  const userRoutes = [
-    {
-      name: "My Applications",
-      icon: <FaChartBar />,
-    },
-    {
-      name: "Saved Jobs",
-      icon: <AiFillStar />,
-    },
-    {
-      name: "Settings",
-      icon: <FaClipboardList />,
-    },
-  ];
-
   function collapseNavbar() {
     setIsOpen(!isOpen);
   }

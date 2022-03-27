@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import net.bytebuddy.asm.Advice.Return;
 
 @RestController
+@RequestMapping("/api/v1/")
 public class JwTAuthController {
 
     @Autowired
@@ -35,6 +36,7 @@ public class JwTAuthController {
     @PostMapping("/authenticate")
     public @ResponseBody ResponseEntity<?> createAuthToken(JwTRequest jwTRequest) {
 
+        System.out.println(jwTRequest.toString());
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(jwTRequest.getUsername(), jwTRequest.getPassword()));
@@ -51,5 +53,15 @@ public class JwTAuthController {
         String token = jwToken.createToken(userDetails.getUsername(), userDetails.getPassword());
 
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @PostMapping("/validate")
+    public @ResponseBody ResponseEntity<?> validateToken(String token) {
+
+        if (jwToken.validateToken(token)) {
+            return ResponseEntity.ok("true");
+        } else {
+            return ResponseEntity.ok("false");
+        }
     }
 }

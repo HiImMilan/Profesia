@@ -25,9 +25,8 @@ public class JwTUserDetailsService implements UserDetailsService {
 
         com.example.profesia.User.User userData = userRepository.findByEmail(username);
 
-        UserBuilder userBuilder = User.builder().username(userData.getName()).password(userData.getPassword())
+        UserBuilder userBuilder = User.builder().username(userData.getEmail()).password(userData.getPassword())
                 .authorities(getAuthorities());
-
         return userBuilder.build();
     }
 
