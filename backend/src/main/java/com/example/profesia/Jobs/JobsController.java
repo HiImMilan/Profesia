@@ -3,11 +3,7 @@ package com.example.profesia.Jobs;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
@@ -17,8 +13,10 @@ public class JobsController {
     @Autowired
     private JobService jobService;
 
-    @GetMapping("/all")
-    public @ResponseBody Iterable<Job> getAllJobs() {
-        return this.jobService.getJobs();
+
+    // infinity scroll load more jobs
+    @GetMapping("/loadJobs")
+    public @ResponseBody String getAllJobs(@RequestParam int page) {
+        return jobService.getRecentJobs(page);
     }
 }

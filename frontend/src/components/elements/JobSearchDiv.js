@@ -55,11 +55,14 @@ function CardRenderer() {
     //enabled: !!hasNextPage,
   })
 
+  var isFailing = false;
   return (
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
       {status === 'loading' ? (
         <SkeletonCard failing="false" />
-      ) : (
+      ) 
+        // if error, isfailing = true
+      : (
         <>
 
           {data.pages.map(page => (
