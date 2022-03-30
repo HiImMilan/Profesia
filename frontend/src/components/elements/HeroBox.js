@@ -6,12 +6,13 @@ let LandingDiv = () => {
       <div class="w-full flex flex-row items-center p-2 justify-between bg-white shadow-xs dark:bg-gray-800">
         <div class="ml-8 text-lg text-white hidden md:flex">WORKA</div>
         <div class="flex items-center mr-8 hidden md:flex">
-          <button
+          <a
+            href="./login"
             type="button"
             class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
           >
             Log in / Sign up
-          </button>
+          </a>
         </div>
       </div>
 

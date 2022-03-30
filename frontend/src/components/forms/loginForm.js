@@ -56,7 +56,9 @@ function validateToken() {
   const data = new FormData();
   data.append("token", token);
   axios.post(URI + "validate", data).then((response) => {
+    console.log(response);
     if (response.status === 200) {
+      console.log("test");
       return <Navigate to={{ pathname: "/dashboard" }}></Navigate>;
     } else {
       localStorage.removeItem("token");

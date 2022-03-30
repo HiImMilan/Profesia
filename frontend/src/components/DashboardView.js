@@ -31,6 +31,8 @@ export default function DashboardView(props) {
             <Outlet />
             <Routes>
               <Route path="/jobs" element={<h1>test</h1>}></Route>
+              <Route path="/candidates" element={<h1>candidates</h1>}></Route>
+              <Route path="/settings" element={<h1>settings</h1>}></Route>
             </Routes>
           </section>
         </main>

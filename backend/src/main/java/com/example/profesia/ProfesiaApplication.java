@@ -19,9 +19,6 @@ public class ProfesiaApplication implements CommandLineRunner {
 	@Autowired
 	private DatabaseSeeder databaseSeeder;
 
-	@Autowired
-	private UserRepository userRepository;
-
 	@Override
 	public void run(String... args) throws IOException {
 		boolean fillDatabase = false;

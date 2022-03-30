@@ -14,12 +14,12 @@ const recrutorRoutes = [
   {
     name: "Candidates",
     icon: <FaClipboardList />,
-    path: "/candidates",
+    path: "candidates",
   },
   {
     name: "Settings",
     icon: <IoIosSettings />,
-    path: "/settings",
+    path: "settings",
   },
 ];
 export default recrutorRoutes;

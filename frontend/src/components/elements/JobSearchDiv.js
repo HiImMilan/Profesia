@@ -32,7 +32,7 @@ function CardRenderer() {
   } = useInfiniteQuery(
     'projects',
     async ({ pageParam = 0 }) => {
-      const res = await axios.get('http://localhost:3001/testApi/projects?page=' + pageParam)
+      const res = await axios.get('http://localhost:8080/jobs/loadJobs?page=' + pageParam)
       console.log("res", res);
       return res.data
     },
