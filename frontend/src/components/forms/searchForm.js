@@ -1,0 +1,1 @@
+/* Panel na lavo na vyhladavanie */
