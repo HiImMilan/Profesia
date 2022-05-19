@@ -15,9 +15,12 @@ public class Job {
     private String title;
     @Column(name = "description", length = 65535, columnDefinition = "TEXT")
     private String description;
+    private String coverImage;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company company;
+    private String advertiserName;
+    private String profilePicture;
     private String category;
     private Date createdAt;
     private Date updatedAt;

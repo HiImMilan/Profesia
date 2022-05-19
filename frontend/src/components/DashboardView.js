@@ -1,7 +1,7 @@
 import Navbar from "./navbar/navbar";
 import Bell from "./bell/Bell";
 import Toast from "./toast/Toast";
-import DashboardPage from "../pages/dashboard/DashboardPage";
+import DashboardPage from "../pages/DashboardPage";
 import {
   BrowserRouter as Router,
   Routes,

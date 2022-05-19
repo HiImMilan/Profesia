@@ -17,5 +17,6 @@ public class Company {
     private String name;
     private String location;
     private String email;
+    private String avatar;
     private String password;
 }

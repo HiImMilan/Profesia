@@ -44,11 +44,10 @@ public class JobService {
         recentJobs = jobs.subList(start, end);
 
         Gson gson = new Gson();
-        String json = gson.toJson(recentJobs)
-                .replace("[", "{\"data\":[")
-                .replace("]", "],\"curson\":" + page + ",\"totalPages\":" + jobs.size() / 12 + "}");
         // jeble riešenie ale na teraz musí postačiť
-        return json;
+        return gson.toJson(recentJobs)
+                .replace("[", "{\"data\":[")
+                .replace("]", "],\"cursor\":" + page + ",\"totalPages\":" + jobs.size() / 12 + "}");
     }
 
 }
