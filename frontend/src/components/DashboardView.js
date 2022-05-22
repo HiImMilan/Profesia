@@ -37,8 +37,6 @@ export default function DashboardView(props) {
           </section>
         </main>
       </section>
-
-      <Toast></Toast>
     </div>
   );
 }
