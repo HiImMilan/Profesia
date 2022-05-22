@@ -68,7 +68,7 @@ function CardRenderer() {
   });
 
   var isFailing = false;
-  console.log(data)
+  console.log(data);
   return (
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
       {status === "loading" ? (
@@ -80,7 +80,7 @@ function CardRenderer() {
             (page) => (
               console.log("page", page),
               // wtf
-              page.data.map((card) => <JobCard {...card} />)
+              page.jobs.map((card) => <JobCard {...card} />)
             )
           )}
 
