@@ -3,6 +3,7 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
 function JobCard(props) {
+  console.log(props);
   return (
     <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
       <a href="#" class="w-full block h-full">
@@ -20,9 +21,9 @@ function JobCard(props) {
             {props.description}
           </p>
           <div class="flex flex-wrap justify-starts items-center mt-4">
-            {/* {props.tags.map((tag) => (
-              <Chip label={tag} />
-            ))} */}
+            {props.chips.map((tag) => (
+              <Chip label={tag.name} />
+            ))}
           </div>
           <div class="flex items-center mt-4">
             <a href="#" class="block relative">
