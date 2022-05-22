@@ -1,14 +1,9 @@
-import { alpha, styled } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
+import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import FormControl from "@mui/material/FormControl";
-import { ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
 import axios from "axios";
-import { Navigate } from "react-router";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { React, useState } from "react";
+import ToastPlaceholder from "../toast/ToastPlaceholder";
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "white",
@@ -32,43 +27,42 @@ const CssTextField = styled(TextField)({
     },
   },
 });
-const URI = "http://127.0.0.1:8080/api/v1/";
-async function login(e) {
-  e.preventDefault();
-  const formData = getFormData();
-  const response = await axios.post(URI + "authenticate", formData);
-  if (response.status === 200) {
-    localStorage.setItem("token", response.data.token);
-  } else {
-    console.log("error");
-  }
-}
 
-function getFormData() {
-  const formData = new FormData();
-  formData.append("username", document.getElementById("email").value);
-  formData.append("password", document.getElementById("password").value);
-  return formData;
-}
-
-function validateToken() {
-  const token = localStorage.getItem("token");
-  const data = new FormData();
-  data.append("token", token);
-  axios.post(URI + "validate", data).then((response) => {
-    console.log(response);
-    if (response.status === 200) {
-      console.log("test");
-      return <Navigate to={{ pathname: "/dashboard" }}></Navigate>;
-    } else {
-      localStorage.removeItem("token");
-    }
-  });
-}
 function LoginForm() {
-  useEffect(() => {
-    validateToken();
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  function updateEmail(e) {
+    setEmail(e.target.value);
+  }
+  function updatePassword(e) {
+    setPassword(e.target.value);
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+    // create formData
+    const formData = getFormData();
+    const URI = "http://127.0.0.1:8080/api/v1/";
+    const response = await axios.post(URI + "authenticate", formData);
+    saveToken();
+
+    function saveToken() {
+      if (response.status == 200 && response.data.token != null) {
+        localStorage.setItem("token", response.data.token);
+        navigate("/dashboard");
+      } else {
+        console.log("error");
+      }
+    }
+
+    function getFormData() {
+      const formData = new FormData();
+      formData.append("username", email);
+      formData.append("password", password);
+      return formData;
+    }
+  }
   return (
     <div class="flex flex-col w-full max-w-md px-4 py-8 rounded-lg shadow bg-black shadow-lg sm:rounded-3xl sm:p-20 bg-clip-padding bg-opacity-40">
       <div class="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
@@ -101,6 +95,7 @@ function LoginForm() {
               id="email"
               label="Worka ID"
               variant="outlined"
+              onChange={updateEmail}
             />
           </div>
           <div class="flex flex-col mb-6">
@@ -109,6 +104,7 @@ function LoginForm() {
               id="password"
               label="Password"
               variant="outlined"
+              onChange={updatePassword}
             />
           </div>
           <div class="flex items-center mb-6 -mt-4">
@@ -135,7 +131,7 @@ function LoginForm() {
             <button
               type="submit"
               class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-              onClick={login}
+              onClick={submitForm}
             >
               Login
             </button>
@@ -143,6 +139,8 @@ function LoginForm() {
         </form>
       </div>
       <div class="flex items-center justify-center mt-6"></div>
+
+      <ToastPlaceholder></ToastPlaceholder>
     </div>
   );
 }

@@ -13,10 +13,9 @@ public class JobsController {
     @Autowired
     private JobService jobService;
 
-
     // infinity scroll load more jobs
     @GetMapping("/loadJobs")
-    public @ResponseBody String getAllJobs(@RequestParam int page) {
+    public @ResponseBody JobResponse getAllJobs(@RequestParam int page) {
         return jobService.getRecentJobs(page);
     }
 }

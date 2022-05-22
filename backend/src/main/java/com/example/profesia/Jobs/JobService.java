@@ -3,6 +3,7 @@ package com.example.profesia.Jobs;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class JobService {
     public void deleteJob(Long id) {
         this.jobRepository.deleteById(id);
     }
-
-    public String getRecentJobs(int page) {
+    
+    public JobResponse getRecentJobs(int page) {
         List<Job> recentJobs = null;
         List<Job> jobs = null;
 
@@ -41,13 +42,19 @@ public class JobService {
         int start = (page) * 12;
         int end = start + 12;
 
+        int totalPages = jobs.size() / 12;
         recentJobs = jobs.subList(start, end);
 
-        Gson gson = new Gson();
-        // jeble riešenie ale na teraz musí postačiť
-        return gson.toJson(recentJobs)
-                .replace("[", "{\"data\":[")
-                .replace("]", "],\"cursor\":" + page + ",\"totalPages\":" + jobs.size() / 12 + "}");
+        /*
+         * Gson gson = new Gson();
+         * // jeble riešenie ale na teraz musí postačiť
+         * return gson.toJson(recentJobs)
+         * .replace("[", "{\"data\":[")
+         * .replace("]", "],\"cursor\":" + page + ",\"totalPages\":" + jobs.size() / 12
+         * + "}");
+         */
+
+        return new JobResponse(recentJobs, page, totalPages);
     }
 
 }

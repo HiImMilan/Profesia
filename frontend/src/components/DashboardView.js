@@ -31,7 +31,7 @@ export default function DashboardView(props) {
           <section className="px-8 py-4 overflow-y-auto md:px-32 relative">
             <Outlet />
             <Routes>
-              <Route path="/" element={<DashboardPage />} />
+              {<Route path="/" element={<DashboardPage />} />}
               <Route path="/jobs" element={<h1>test</h1>}></Route>
             </Routes>
           </section>

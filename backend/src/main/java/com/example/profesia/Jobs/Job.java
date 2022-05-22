@@ -3,6 +3,8 @@ package com.example.profesia.Jobs;
 import java.util.*;
 import javax.persistence.*;
 import com.example.profesia.Company.Company;
+import com.example.profesia.Jobs.Categories.Chips;
+
 import lombok.Data;
 
 @Entity
@@ -22,6 +24,9 @@ public class Job {
     private String advertiserName;
     private String profilePicture;
     private String category;
+
+    @ManyToMany
+    public List<Chips> chips;
     private Date createdAt;
     private Date updatedAt;
     private Date endDate;

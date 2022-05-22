@@ -1,6 +1,6 @@
 import React from "react";
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 
 function JobCard(props) {
   return (
@@ -20,9 +20,9 @@ function JobCard(props) {
             {props.description}
           </p>
           <div class="flex flex-wrap justify-starts items-center mt-4">
-            {props.tags.map((tag) => (
+            {/* {props.tags.map((tag) => (
               <Chip label={tag} />
-            ))}
+            ))} */}
           </div>
           <div class="flex items-center mt-4">
             <a href="#" class="block relative">
