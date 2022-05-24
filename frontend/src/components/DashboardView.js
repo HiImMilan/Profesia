@@ -8,7 +8,15 @@ import {
   Route,
   Outlet,
 } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function DashboardView(props) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("token") == null) {
+      navigate("/login");
+    }
+  });
   return (
     <div className="App">
       <section className="flex justify-center h-screen max-h-screen relative">
