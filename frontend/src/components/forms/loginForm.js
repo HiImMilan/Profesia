@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 import ToastPlaceholder from "../toast/ToastPlaceholder";
 import { useToast } from "../toast/ToastContext";
+import ModalUnstyled from "@mui/base/ModalUnstyled";
+import Dialog from "@mui/material/Dialog";
+import ResetPassword from "./ResetPassword";
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "white",
@@ -32,6 +35,7 @@ const CssTextField = styled(TextField)({
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [getresetPassword, setResetPassword] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -41,6 +45,11 @@ function LoginForm() {
   function updatePassword(e) {
     setPassword(e.target.value);
   }
+  function resetPassword(e) {
+    e.preventDefault();
+    setResetPassword(true);
+  }
+
   function getFormData() {
     const formData = new FormData();
     formData.append("username", email);
@@ -102,6 +111,7 @@ function LoginForm() {
               id="email"
               label="Worka ID"
               variant="outlined"
+              required
               onChange={updateEmail}
             />
           </div>
@@ -111,22 +121,27 @@ function LoginForm() {
               id="password"
               label="Password"
               variant="outlined"
+              required
               onChange={updatePassword}
             />
           </div>
           <div class="flex items-center mb-6 -mt-4">
             <div class="flex ml-auto">
-              <a
-                href="#"
+              <button
+                href="password-reset"
                 class="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
+                onClick={resetPassword}
               >
                 Forgot Your Password?
-              </a>
+              </button>
+              <Dialog open={getresetPassword}>
+                <ResetPassword email={email}></ResetPassword>
+              </Dialog>
               <div class="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white">
                 <span class="mx-2">|</span>
               </div>
               <a
-                href="#"
+                href="sign-up"
                 target="_blank"
                 class="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
               >
