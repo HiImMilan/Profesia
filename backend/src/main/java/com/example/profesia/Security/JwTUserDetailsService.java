@@ -22,9 +22,12 @@ public class JwTUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-
+        System.out.println("username: " + username);
         com.example.profesia.User.User userData = userRepository.findByEmail(username);
 
+        if (userData == null) {
+            return null;
+        }
         UserBuilder userBuilder = User.builder().username(userData.getEmail()).password(userData.getPassword())
                 .authorities(getAuthorities());
         return userBuilder.build();

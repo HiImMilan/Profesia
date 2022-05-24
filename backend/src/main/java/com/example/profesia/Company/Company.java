@@ -1,6 +1,11 @@
 package com.example.profesia.Company;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.example.profesia.User.User;
+
 import lombok.Data;
 
 @Entity
@@ -15,4 +20,6 @@ public class Company {
     private String email;
     private String avatar;
     private String password;
+    @OneToMany
+    private List<User> recrutors;
 }

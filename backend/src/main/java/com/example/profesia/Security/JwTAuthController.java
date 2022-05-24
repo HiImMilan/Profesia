@@ -50,7 +50,7 @@ public class JwTAuthController {
         }
 
         UserDetails userDetails = jwTUserDetailsService.loadUserByUsername(jwTRequest.getUsername());
-        String token = jwToken.createToken(userDetails.getUsername(), userDetails.getPassword());
+        String token = jwToken.createToken(userDetails.getUsername(), userDetails.getUsername());
 
         return ResponseEntity.ok(new JwtResponse(token));
     }
