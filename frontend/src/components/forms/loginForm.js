@@ -2,8 +2,9 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import ToastPlaceholder from "../toast/ToastPlaceholder";
+import { useToast } from "../toast/ToastContext";
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "white",
@@ -32,37 +33,43 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const toast = useToast();
+
   function updateEmail(e) {
     setEmail(e.target.value);
   }
   function updatePassword(e) {
     setPassword(e.target.value);
   }
-
+  function getFormData() {
+    const formData = new FormData();
+    formData.append("username", email);
+    formData.append("password", password);
+    return formData;
+  }
   async function submitForm(e) {
     e.preventDefault();
     // create formData
     const formData = getFormData();
     const URI = "http://127.0.0.1:8080/api/v1/";
-    const response = await axios.post(URI + "authenticate", formData);
-    saveToken();
-
-    function saveToken() {
-      if (response.status == 200 && response.data.token != null) {
-        localStorage.setItem("token", response.data.token);
-        navigate("/dashboard");
-      } else {
-        console.log("error");
-      }
-    }
-
-    function getFormData() {
-      const formData = new FormData();
-      formData.append("username", email);
-      formData.append("password", password);
-      return formData;
-    }
+    axios
+      .post(URI + "authenticate", formData)
+      .then((response) => {
+        if (response.status == 200 && response.data.token != null) {
+          localStorage.setItem("token", response.data.token);
+          navigate("/dashboard");
+        }
+      })
+      .catch((error) => {
+        toast.addToast("Error", "Invalid username or password");
+      });
   }
+  useEffect(() => {
+    if (localStorage.getItem("token") != null) {
+      navigate("/dashboard");
+    }
+  });
+
   return (
     <div class="flex flex-col w-full max-w-md px-4 py-8 rounded-lg shadow bg-black shadow-lg sm:rounded-3xl sm:p-20 bg-clip-padding bg-opacity-40">
       <div class="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">

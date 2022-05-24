@@ -1,5 +1,5 @@
 import { GrClose } from "react-icons/gr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Toast(props) {
   const [isOpen, setIsOpen] = useState(true);
