@@ -1,6 +1,5 @@
 import Navbar from "./navbar/navbar";
 import Bell from "./bell/Bell";
-import Toast from "./toast/Toast";
 import DashboardPage from "../pages/DashboardPage";
 import {
   BrowserRouter as Router,
@@ -12,15 +11,28 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useToast } from "./toast/ToastContext";
 export default function DashboardView(props) {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
-
+  const toast = useToast();
   useEffect(() => {
     if (localStorage.getItem("token") == null) {
       navigate("/login");
     }
 
+    const tokenForm = new FormData();
+    tokenForm.append("token", localStorage.getItem("token"));
+
+    axios
+      .post("http://127.0.0.1:8080/api/v1/validate", tokenForm)
+      .then((res) => {
+        if (res.data !== true) {
+          navigate("/login");
+          localStorage.removeItem("token");
+          toast.addToast("Error", "Session expired");
+        }
+      });
     // get user info
 
     axios("http://127.0.0.1:8080/api/v1/info", {
@@ -45,7 +57,11 @@ export default function DashboardView(props) {
               </li>
               <li className="rounded-xl flex justify-center items-center flex-1 ">
                 <div className="font-bold mx-5">{userDetails.name}</div>
-                <img className="w-10 h-10" src={userDetails.avatar} />
+                <img
+                  className="w-10 h-10"
+                  src={userDetails.avatar}
+                  alt="Avatar icon"
+                />
               </li>
             </ul>
           </nav>

@@ -25,6 +25,9 @@ public class UserController {
     public UserInfo getUserInfo() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByEmail(auth.getName());
+        if (user == null) {
+            return null;
+        }
         UserInfo userInfo = new UserInfo(user.getName(), user.getEmail(), user.getAvatar());
         return userInfo;
     }
