@@ -13,19 +13,18 @@ function AdminPage() {
     { field: "firstName", headerName: "First name", width: 130 },
     { field: "lastName", headerName: "Last name", width: 130 },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      width: 90,
-    },
-    {
-      field: "fullName",
-      headerName: "Full name",
+      field: "position",
+      headerName: "Position",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
       width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
     },
   ];
 
@@ -44,7 +43,7 @@ function AdminPage() {
     <div className="App">
       <h3 className="text-2xl  text-white">Dashboard</h3>
 
-      <section className="grid gap-4 my-5 grid-cols-1 grid-flow-row md:grid-cols-6 md:grid-rows-2 md:grid-flow-col-dense md:h-96">
+      <section className="grid gap-4 my-5 grid-cols-1 grid-flow-row lg:grid-cols-4 md:grid-rows-2 md:grid-flow-col-dense md:h-96 xl:grid-cols-6">
         <DashBoardCard title="Currently listed jobs" value="10"></DashBoardCard>
         <DashBoardCard title="Applications" value="10"></DashBoardCard>
         <DashBoardCard title="Customers" value="10"></DashBoardCard>
@@ -55,8 +54,8 @@ function AdminPage() {
         </section>
       </section>
 
-      <section className=" my-16 md:my-64">
-        <div class="h-96 w-1/2 text-white">
+      <section className="my-16 md:my-32">
+        <div class="h-96 w-full text-white lg:w-1/2">
           <DataGrid
             rows={rows}
             columns={columns}

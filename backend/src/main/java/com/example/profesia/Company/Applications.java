@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class Applications {
     @ManyToOne
     private Resumee resume;
 
+    @OneToOne
     private Company company;
 
     private boolean status;

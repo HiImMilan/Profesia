@@ -5,9 +5,9 @@ import "./navbar.css";
 import userRoutes from "../../routes/userRoutes";
 import recrutorRoutes from "../../routes/recrutorRoutes";
 
-export default function Navbar() {
-  const routes = userRoutes;
-  const [isOpen, setIsOpen] = useState(true);
+export default function Navbar(props) {
+  const routes = recrutorRoutes;
+  const [isOpen, setIsOpen] = [...props.open];
   function collapseNavbar() {
     setIsOpen(!isOpen);
   }
@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <nav
       className={
-        "bg-slate-800 p-5 flex flex-col transition-all duration-200 w-56 mainNav " +
+        "bg-slate-800 p-5 flex flex-col transition-all duration-200 w-56 z-10 mainNav " +
         (isOpen ? "active" : "")
       }
     >

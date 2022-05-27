@@ -4,14 +4,6 @@ import Stack from "@mui/material/Stack";
 import { useEffect } from "react";
 
 function JobCard(props) {
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-    console.log("context menu");
-  };
-
-  useEffect(() => {
-    document.addEventListener("contextmenu", handleContextMenu);
-  });
   return (
     <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
       <a href="#" class="w-full block h-full">

@@ -8,7 +8,9 @@
 .mainNav {
   max-width: 80px;
 }
-
+.nav-button{
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .mainNav {
     left: -100%;
@@ -20,5 +22,8 @@
   }
   .mainNav.active {
     left: 0;
+  }
+  .nav-button{
+    display: block !important;
   }
 }

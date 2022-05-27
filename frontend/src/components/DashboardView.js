@@ -18,6 +18,8 @@ export default function DashboardView(props) {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
   const toast = useToast();
+
+  const [mobileNav, setMobileNav] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("token") == null) {
       navigate("/login");
@@ -50,9 +52,17 @@ export default function DashboardView(props) {
   return (
     <div className="App">
       <section className="flex justify-center h-screen max-h-screen relative">
-        <Navbar></Navbar>
+        <Navbar open={[mobileNav, setMobileNav]}></Navbar>
         <main className="flex-1 bg-slate-900 flex flex-col">
           <nav className="flex bg-slate-800 justify-end py-2">
+            <button
+              className="text-3xl text-white mr-auto mx-5 outline-none border-none nav-button"
+              onClick={() => {
+                setMobileNav(!mobileNav);
+              }}
+            >
+              W
+            </button>
             <ul className="flex justify-center items-center px-2 text-white bg-slate-800">
               <li>
                 <Bell></Bell>
