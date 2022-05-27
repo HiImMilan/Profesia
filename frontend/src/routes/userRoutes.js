@@ -5,17 +5,17 @@ const userRoutes = [
   {
     name: "My Applications",
     icon: <FaChartBar />,
-    path: "/applications",
+    path: "applications",
   },
   {
     name: "Saved Jobs",
     icon: <AiFillStar />,
-    path: "/saved_jobs",
+    path: "saved_jobs",
   },
   {
     name: "Settings",
     icon: <FaClipboardList />,
-    path: "/settings",
+    path: "settings",
   },
 ];
 

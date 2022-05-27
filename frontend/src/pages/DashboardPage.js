@@ -45,8 +45,8 @@ function AdminPage() {
       <h3 className="text-2xl  text-white">Dashboard</h3>
 
       <section className="grid gap-4 my-5 grid-cols-1 grid-flow-row md:grid-cols-6 md:grid-rows-2 md:grid-flow-col-dense md:h-96">
-        <DashBoardCard title="Customers" value="10"></DashBoardCard>
-        <DashBoardCard title="Customers" value="10"></DashBoardCard>
+        <DashBoardCard title="Currently listed jobs" value="10"></DashBoardCard>
+        <DashBoardCard title="Applications" value="10"></DashBoardCard>
         <DashBoardCard title="Customers" value="10"></DashBoardCard>
         <DashBoardCard title="Customers" value="10"></DashBoardCard>
 
