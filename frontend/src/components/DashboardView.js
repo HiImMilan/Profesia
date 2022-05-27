@@ -1,6 +1,7 @@
 import Navbar from "./navbar/navbar";
 import Bell from "./bell/Bell";
 import DashboardPage from "../pages/DashboardPage";
+import JobPage from "../pages/JobPage";
 import {
   BrowserRouter as Router,
   Routes,
@@ -66,11 +67,11 @@ export default function DashboardView(props) {
               </li>
             </ul>
           </nav>
-          <section className="px-8 py-4 overflow-y-auto lg:px-32 relative">
+          <section className="p-8 overflow-y-auto lg:p-16 relative">
             <Outlet />
             <Routes>
               {<Route path="/" element={<DashboardPage />} />}
-              <Route path="/jobs" element={<h1>test</h1>}></Route>
+              <Route path="/jobs" element={<JobPage />}></Route>
             </Routes>
           </section>
         </main>
