@@ -1,10 +1,16 @@
 import { FaChartBar, FaClipboardList, FaBars } from "react-icons/fa";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineMail } from "react-icons/ai";
+import { IoIosSettings } from "react-icons/io";
 
 const userRoutes = [
   {
+    name: "Jobs",
+    icon: <FaClipboardList />,
+    path: "jobs",
+  },
+  {
     name: "My Applications",
-    icon: <FaChartBar />,
+    icon: <AiOutlineMail />,
     path: "applications",
   },
   {
@@ -14,7 +20,7 @@ const userRoutes = [
   },
   {
     name: "Settings",
-    icon: <FaClipboardList />,
+    icon: <IoIosSettings />,
     path: "settings",
   },
 ];
