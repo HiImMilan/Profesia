@@ -2,6 +2,10 @@ package com.example.profesia.Jobs;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,29 +36,12 @@ public class JobService {
     public void deleteJob(Long id) {
         this.jobRepository.deleteById(id);
     }
-    
+
     public JobResponse getRecentJobs(int page) {
-        List<Job> recentJobs = null;
-        List<Job> jobs = null;
+        Pageable sortedByDate = PageRequest.of(page, 10, Sort.by("createdAt"));
 
-        // get 12 jobs
-        jobs = (List<Job>) jobRepository.findAll(); // cast = rakovina
-        int start = (page) * 12;
-        int end = start + 12;
-
-        int totalPages = jobs.size() / 12;
-        recentJobs = jobs.subList(start, end);
-
-        /*
-         * Gson gson = new Gson();
-         * // jeble riešenie ale na teraz musí postačiť
-         * return gson.toJson(recentJobs)
-         * .replace("[", "{\"data\":[")
-         * .replace("]", "],\"cursor\":" + page + ",\"totalPages\":" + jobs.size() / 12
-         * + "}");
-         */
-
-        return new JobResponse(recentJobs, page, totalPages);
+        Page<Job> sortedProducts = (Page<Job>) jobRepository.findAll(sortedByDate);
+        return new JobResponse(sortedProducts.getContent(), page, sortedProducts.getTotalPages());
     }
 
 }
