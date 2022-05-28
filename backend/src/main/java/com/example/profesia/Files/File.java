@@ -18,7 +18,7 @@ import lombok.Data;
 @Data
 @Table(name = "files")
 public class File {
-
+    // CVčka
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
