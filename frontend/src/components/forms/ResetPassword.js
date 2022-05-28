@@ -2,13 +2,13 @@ import { react, useState } from "react";
 import axios from "axios";
 function ResetPassword(props) {
   const [email, setEmail] = useState(props.email);
-
+  const toggle = props.close;
   async function resetPassword(e) {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("email", email);
     await axios.post("http://127.0.0.1:8080/api/v1/reset-password", formData);
+    toggle();
   }
 
   return (

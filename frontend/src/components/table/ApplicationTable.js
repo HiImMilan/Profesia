@@ -1,4 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
+import "./ApplicationTable.css"
 export default function ApplicationTable() {
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
