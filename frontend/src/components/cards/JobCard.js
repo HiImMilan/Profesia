@@ -5,14 +5,14 @@ import { useEffect } from "react";
 
 function JobCard(props) {
   return (
-    <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
+    <div class="overflow-hidden shadow-lg rounded-lg w-60 md:w-80 cursor-pointer m-auto">
       <a href="#" class="w-full block h-full">
         <img
           alt="cover"
           src={props.coverImage}
           class="max-h-40 w-full object-cover"
         />
-        <div class="bg-white dark:bg-gray-800 w-full p-4">
+        <div class="bg-white dark:bg-gray-800 w-full h-80 p-4 flex flex-col">
           <p class="text-indigo-500 text-md font-medium">{props.advertiser}</p>
           <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
             {props.title}
@@ -25,7 +25,7 @@ function JobCard(props) {
               <Chip label={tag.name} />
             ))}
           </div>
-          <div class="flex items-center mt-4">
+          <div class="flex items-center mt-auto">
             <a href="#" class="block relative">
               <img
                 alt="profil"
