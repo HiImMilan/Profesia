@@ -3,7 +3,7 @@ import Checkbox from "@mui/material/Checkbox";
 export default function Accordeon(props) {
   return (
     <>
-      <div class="bg-slate-800 p-5 max-w-xl rounded-xl">
+      <div class="bg-slate-800 p-5 max-w-xl rounded-xl mb-10">
         <div class="flex justify-between items-center">
           <h2 class="text-1xl my-4">{props.title}</h2>
           <Checkbox defaultChecked />

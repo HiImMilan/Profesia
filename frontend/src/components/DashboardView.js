@@ -15,10 +15,16 @@ import { useState } from "react";
 import { useToast } from "./toast/ToastContext";
 import Popper from "@mui/material/Popper";
 import SettingsPage from "../pages/SettingsPage";
+import { ImCross } from "react-icons/im";
 export default function DashboardView(props) {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
   const toast = useToast();
+
+  function logout() {
+    localStorage.removeItem("token");
+    navigate("/");
+  }
 
   const [mobileNav, setMobileNav] = useState(false);
   useEffect(() => {
@@ -50,6 +56,13 @@ export default function DashboardView(props) {
       }
     });
   }, []);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
   return (
     <div className="App">
       <section className="flex justify-center h-screen max-h-screen relative">
@@ -68,13 +81,20 @@ export default function DashboardView(props) {
               <li>
                 <Bell></Bell>
               </li>
-              <li className="rounded-xl flex justify-center items-center flex-1 ">
-                <div className="font-bold mx-5">{userDetails.name}</div>
-                <img
-                  className="w-10 h-10"
-                  src={userDetails.avatar}
-                  alt="Avatar icon"
-                />
+              <Popper id={id} open={open} anchorEl={anchorEl}>
+                <div class="bg-white ml-10 p-2 rounded-sm">
+                  <button onClick={logout}>Logout</button>
+                </div>
+              </Popper>
+              <li className="rounded-xl flex justify-center items-center flex-1 mx-5">
+                <button onClick={handleClick}>
+                  <span className="font-bold mx-5">{userDetails.name}</span>
+                  <img
+                    className="w-10 h-10 inline-block"
+                    src={userDetails.avatar}
+                    alt="Avatar icon"
+                  />
+                </button>
               </li>
             </ul>
           </nav>
