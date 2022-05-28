@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import AdminPage from "./pages/AdminPage";
 import LoginRegisterPage from "./pages/LoginRegisterPage";
 import "./App.css";
+import UploadFileForm from "./components/forms/uploadFileForm";
 import DashboardView from "./components/DashboardView";
 import { ToastProvider } from "./components/toast/ToastContext";
 
@@ -13,6 +14,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route
+            path="/debug"
+            element={<UploadFileForm></UploadFileForm>}
+          ></Route>
           <Route
             path="/login"
             element={<LoginRegisterPage></LoginRegisterPage>}
