@@ -12,7 +12,6 @@ import lombok.Data;
 @Data
 @Table(name = "Chips")
 public class Chips {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
