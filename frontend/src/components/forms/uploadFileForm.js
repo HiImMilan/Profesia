@@ -27,7 +27,8 @@ const Container = styled.div`
   border-width: 4px;
   border-color: ${(props) => getColor(props)};
   border-style: dashed;
-  background-color: #1f1f1f;
+  border-radius: 15px;
+  background-color: #0f172a;
   color: white;
   font-weight: bold;
   font-size: 1.4rem;
