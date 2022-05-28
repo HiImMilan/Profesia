@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "./toast/ToastContext";
 import Popper from "@mui/material/Popper";
+import SettingsPage from "../pages/SettingsPage";
 export default function DashboardView(props) {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
@@ -82,6 +83,7 @@ export default function DashboardView(props) {
             <Routes>
               {<Route path="/" element={<DashboardPage />} />}
               <Route path="/jobs" element={<JobPage />}></Route>
+              <Route path="/settings" element={<SettingsPage />}></Route>
             </Routes>
           </section>
         </main>

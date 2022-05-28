@@ -32,7 +32,7 @@ export default function ApplicationTable() {
   ];
 
   return (
-    <div class="h-96 w-full text-white lg:w-1/2">
+    <div class="h-96 w-full text-white xl:w-2/3">
       <DataGrid
         rows={rows}
         columns={columns}
@@ -46,6 +46,7 @@ export default function ApplicationTable() {
           "& .MuiDataGrid-cell:hover": {
             color: "primary.main",
           },
+          color: "0xffffff",
         }}
       />
       <div class="flex gap-3">
