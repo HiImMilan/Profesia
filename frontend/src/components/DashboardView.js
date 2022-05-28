@@ -40,7 +40,7 @@ export default function DashboardView(props) {
       });
     // get user info
 
-    axios("http://127.0.0.1:8080/api/v1/info", {
+    axios("http://127.0.0.1:8080/api/users/info", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
