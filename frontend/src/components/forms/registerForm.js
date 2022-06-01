@@ -92,13 +92,12 @@ function RegisterForm(props) {
         axios
             .post(URI, formData, config)
             .then((response) => {
-                if (response.status == 200 && response.data.token != null) {
-                    localStorage.setItem("token", response.data.token);
-                    navigate("/dashboard");
+                if (response.status == 200) {
+                    navigate("/login");
                 }
             })
             .catch((error) => {
-                toast.addToast("Error", "Invalid username or password");
+                toast.addToast("Failed", "Unknown error: " + error);
             });
     }
 

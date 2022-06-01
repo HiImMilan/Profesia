@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "./toast/ToastContext";
+import NewJobForm from "./forms/createJobForm";
 import Popper from "@mui/material/Popper";
 import SettingsPage from "../pages/SettingsPage";
 import { ImCross } from "react-icons/im";
@@ -102,6 +103,7 @@ export default function DashboardView(props) {
             <Outlet />
             <Routes>
               {<Route path="/" element={<DashboardPage />} />}
+              <Route path="/jobs/newjob" element={<NewJobForm />}></Route>
               <Route path="/jobs" element={<JobPage />}></Route>
               <Route path="/settings" element={<SettingsPage />}></Route>
             </Routes>
