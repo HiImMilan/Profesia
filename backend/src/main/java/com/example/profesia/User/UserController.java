@@ -30,7 +30,7 @@ public class UserController {
             return null;
         }
 
-        boolean IsRecrutor = false;
+        boolean IsRecrutor = userRepository.isRecrutor(auth.getName()) != null;
         UserInfo userInfo = new UserInfo(user.getName(), user.getEmail(), user.getAvatar(),IsRecrutor);
         return userInfo;
     }

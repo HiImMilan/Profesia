@@ -18,6 +18,7 @@ import Popper from "@mui/material/Popper";
 import SettingsPage from "../pages/SettingsPage";
 import { ImCross } from "react-icons/im";
 import SavedJobs from "../pages/SavedJobs";
+import ApplicationsPage from "../pages/ApplicationsPage";
 
 export default function DashboardView(props) {
   const navigate = useNavigate();
@@ -117,6 +118,11 @@ export default function DashboardView(props) {
               <Route
                 path="/saved_jobs"
                 element={<SavedJobs></SavedJobs>}
+              ></Route>
+
+              <Route
+                path="/applications"
+                element={<ApplicationsPage />}
               ></Route>
             </Routes>
           </section>
