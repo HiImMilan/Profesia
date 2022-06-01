@@ -16,4 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM user WHERE name = ?1", nativeQuery = true)
     User findByName(String name);
 
+    @Query(value = "SELECT id FROM user INNER JOIN company_recrutors ON user.id=company_recrutors.company_id WHERE email = 1?", nativeQuery = true)
+    boolean isRecrutor(@Param("email") String email);
+
 }

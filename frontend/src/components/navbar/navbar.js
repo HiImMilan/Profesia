@@ -6,7 +6,13 @@ import userRoutes from "../../routes/userRoutes";
 import recrutorRoutes from "../../routes/recrutorRoutes";
 
 export default function Navbar(props) {
-  const routes = recrutorRoutes;
+  let routes = null;
+  console.log(props.routes);
+  if (props.routes === true) {
+    routes = recrutorRoutes;
+  } else {
+    routes = userRoutes;
+  }
   const [isOpen, setIsOpen] = [...props.open];
   function collapseNavbar() {
     setIsOpen(!isOpen);

@@ -29,7 +29,9 @@ public class UserController {
         if (user == null) {
             return null;
         }
-        UserInfo userInfo = new UserInfo(user.getName(), user.getEmail(), user.getAvatar());
+
+        boolean IsRecrutor = false;
+        UserInfo userInfo = new UserInfo(user.getName(), user.getEmail(), user.getAvatar(),IsRecrutor);
         return userInfo;
     }
 

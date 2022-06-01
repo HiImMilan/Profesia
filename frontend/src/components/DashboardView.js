@@ -17,6 +17,8 @@ import NewJobForm from "./forms/createJobForm";
 import Popper from "@mui/material/Popper";
 import SettingsPage from "../pages/SettingsPage";
 import { ImCross } from "react-icons/im";
+import SavedJobs from "../pages/SavedJobs";
+
 export default function DashboardView(props) {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
@@ -67,7 +69,10 @@ export default function DashboardView(props) {
   return (
     <div className="App">
       <section className="flex justify-center h-screen max-h-screen relative">
-        <Navbar open={[mobileNav, setMobileNav]}></Navbar>
+        <Navbar
+          open={[mobileNav, setMobileNav]}
+          routes={userDetails.IsRecrutor}
+        ></Navbar>
         <main className="flex-1 bg-slate-900 flex flex-col">
           <nav className="flex bg-slate-800 justify-end py-2">
             <button
@@ -104,8 +109,15 @@ export default function DashboardView(props) {
             <Routes>
               {<Route path="/" element={<DashboardPage />} />}
               <Route path="/jobs/newjob" element={<NewJobForm />}></Route>
-              <Route path="/jobs" element={<JobPage />}></Route>
+              <Route
+                path="/jobs"
+                element={<JobPage recrutor={userDetails.IsRecrutor} />}
+              ></Route>
               <Route path="/settings" element={<SettingsPage />}></Route>
+              <Route
+                path="/saved_jobs"
+                element={<SavedJobs></SavedJobs>}
+              ></Route>
             </Routes>
           </section>
         </main>
