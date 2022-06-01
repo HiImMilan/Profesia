@@ -12,11 +12,6 @@ const recrutorRoutes = [
     path: "jobs",
   },
   {
-    name: "Listings",
-    icon: <FaClipboardList />,
-    path: "listings",
-  },
-  {
     name: "Settings",
     icon: <IoIosSettings />,
     path: "settings",
