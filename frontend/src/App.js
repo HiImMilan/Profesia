@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import AdminPage from "./pages/AdminPage";
 import LoginRegisterPage from "./pages/LoginRegisterPage";
+import RegisterForm from "./components/forms/registerForm";
 import "./App.css";
 import UploadFileForm from "./components/forms/uploadFileForm";
 import DashboardView from "./components/DashboardView";

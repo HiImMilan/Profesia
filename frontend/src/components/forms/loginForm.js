@@ -32,7 +32,8 @@ const CssTextField = styled(TextField)({
   },
 });
 
-function LoginForm() {
+function LoginForm(props) {
+  const {onToggle} = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [getresetPassword, setResetPassword] = useState(false);
@@ -59,6 +60,7 @@ function LoginForm() {
   function close() {
     setResetPassword(!getresetPassword);
   }
+
   async function submitForm(e) {
     e.preventDefault();
     // create formData
@@ -81,6 +83,8 @@ function LoginForm() {
       navigate("/dashboard");
     }
   });
+
+
 
   return (
     <div class="flex flex-col w-full max-w-md px-4 py-8 rounded-lg shadow bg-black shadow-lg sm:rounded-3xl sm:p-20 bg-clip-padding bg-opacity-40">
@@ -144,13 +148,13 @@ function LoginForm() {
               <div class="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white">
                 <span class="mx-2">|</span>
               </div>
-              <a
-                href="sign-up"
+              <button
+                onClick={onToggle}
                 target="_blank"
                 class="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
               >
                 Create Account?
-              </a>
+              </button>
             </div>
           </div>
           <div class="flex w-full">

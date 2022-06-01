@@ -21,4 +21,13 @@ public class User {
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    public User(String name, String email, String password, String avatar) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.avatar = avatar;
+    }
+
+    public User() {
+    }
 }

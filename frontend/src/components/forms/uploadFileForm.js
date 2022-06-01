@@ -37,7 +37,10 @@ const Container = styled.div`
 `;
 
 
-function UploadFileForm({ onDrop }) {
+function UploadFileForm(props) {
+
+  const { fileUrl } = props;
+
   const {
     getRootProps,
     getInputProps,
@@ -52,6 +55,7 @@ function UploadFileForm({ onDrop }) {
     noKeyboard: true,
   });
 
+function onDrop(){
   if (acceptedFiles.length > 0) {
     let data = new FormData();
     data.append("file0", acceptedFiles.pop());
@@ -63,12 +67,13 @@ function UploadFileForm({ onDrop }) {
       if (res.status === 200) {
         document.getElementById("uploadBtn").innerHTML = `Súbor bol úspešne nahraný za ${time} ms`;
         console.log(res.data);
+        fileUrl(res.data);
       } else {
         document.getElementById("uploadBtn").innerHTML = `Nepodarilo sa nahrať súbor`;
       }
     });
   }
-
+}
   return (
     <>
       {' '}
@@ -88,4 +93,5 @@ function UploadFileForm({ onDrop }) {
   );
 
 }
+
 export default UploadFileForm;
